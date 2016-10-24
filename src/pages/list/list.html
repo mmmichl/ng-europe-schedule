@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>My First List</ion-title>
+    <ion-title>NG Europe Schedule</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <div *ngFor="let entry of schedule">
+  <ion-list no-lines>
+    <div *ngFor="let entry of schedule" [class.day-start]="entry.type === EntryType.NEW_DAY">
       <app-list-schedule [entry]="entry"></app-list-schedule>
     </div>
   </ion-list>

@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailsPage } from '../item-details/item-details';
 import {ScheduleService} from '../../services/schedule.service';
-import {ScheduleEntry} from '../../model/schedule-entry';
+import {ScheduleEntry, EntryType} from '../../model/schedule-entry';
 
 
 @Component({
@@ -12,6 +12,7 @@ import {ScheduleEntry} from '../../model/schedule-entry';
 })
 export class ListPage implements OnInit {
   public schedule: ScheduleEntry[] = [];
+  EntryType = EntryType;
 
   selectedItem: any;
   icons: string[];

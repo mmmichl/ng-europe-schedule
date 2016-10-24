@@ -4,7 +4,7 @@ import {Http, Response} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {ScheduleEntry, EntryType} from '../model/schedule-entry';
-//import * as moment from 'moment';
+import moment from 'moment';
 
 const SCHEDULE_STORE_KEY = 'schedule';
 const STARS_STORE_KEY = 'stars';
@@ -132,8 +132,7 @@ function parseEntry(liEntry: HTMLLIElement): ScheduleEntry {
   return new ScheduleEntry(
     parseType(liEntry.querySelector('.timeline-badge i').className),
     liEntry.querySelector('.timeline-panel .timeline-title').textContent,
-    null,
-    // timeNDuration && moment(timeNDuration.childNodes[1].textContent.trim(), 'MMM DD, YYYY, hh:mma').toDate(),
+    timeNDuration && moment(timeNDuration.childNodes[1].textContent.trim(), 'MMM DD, YYYY, hh:mma').toDate(),
     timeNDuration && parseInt(timeNDuration.childNodes[3].textContent.trim(), 10),
     description && description.textContent
   );

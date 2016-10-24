@@ -1,14 +1,14 @@
-  <div [class.day-start]="entry.type === EntryType.NEW_DAY">
-    <div>{{entry.title}}</div>
-    <div>{{entry.time | date:'shortTime'}}</div>
-    <button *ngIf="isStarable(entry)" (click)="toggleStar(entry)" ion-button color="default">
-      <ion-icon name="star" [class.yellow]="isStarred(entry)" item-left></ion-icon>
-    </button>
-
-    <div>
-      <button (click)="displayToggle = !displayToggle" ion-button>
-        <ion-icon name="arrow-down" item-left></ion-icon>
-      </button>
-      <p *ngIf="displayToggle">{{entry.description}}</p>
-    </div>
-  </div>
+<ion-item>
+  <ion-icon (click)="toggleStar(entry)"
+            [name]="isStarable(entry) ? 'star' : ''" [class.yellow]="isStarred(entry)"
+            item-left></ion-icon>
+  <h2>
+    <small>{{entry.time | date:'shortTime'}}</small>
+    {{entry.title}}
+  </h2>
+  <button *ngIf="entry.description" (click)="displayToggle = !displayToggle" ion-button clear
+          style="vertical-align: middle" item-right>
+    <ion-icon name="arrow-dropdown"></ion-icon>
+  </button>
+  <p style="white-space: normal" *ngIf="displayToggle">{{entry.description}}</p>
+</ion-item>
