@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let entry of schedule; let idx = index" [class.day-start]="entry.type === EntryType.NEW_DAY">
+    <div>{{entry.title}}</div>
+    <div>{{entry.time | date:'shortTime'}}</div>
+    <button *ngIf="isStarable(entry)" (click)="toggleStar(entry)">{{isStarred(entry) ? '!!' : 'Star?'}}</button>
+
+    <div>
+      <button (click)="displayToggle[idx] = !displayToggle[idx]">toggle</button>
+      <p *ngIf="displayToggle[idx]">{{entry.description}}</p>
+    </div>
+  </li>
+</ul>
