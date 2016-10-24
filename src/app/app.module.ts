@@ -4,13 +4,16 @@ import { MyApp } from './app.component';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
+import {ScheduleService} from '../services/schedule.service';
+import {ListScheduleComponent} from '../components/list-schedule/list-schedule.component';
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    ListScheduleComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,8 +23,11 @@ import { ListPage } from '../pages/list/list';
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    ListScheduleComponent
   ],
-  providers: []
+  providers: [
+    ScheduleService
+  ]
 })
 export class AppModule {}

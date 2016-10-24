@@ -20,7 +20,7 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    //public menu: MenuController
+    public menu: MenuController
   ) {
     this.initializeApp();
 
@@ -34,7 +34,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleLightContent();
+      StatusBar.styleDefault();
     });
   }
 
