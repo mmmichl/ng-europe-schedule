@@ -3,12 +3,12 @@
             [name]="isStarable(entry) ? 'star' : ''" [class.yellow]="isStarred(entry)"
             item-left></ion-icon>
   <h2>
-    <small>{{entry.time | date:'shortTime'}}</small>
+    <small *ngIf="entry.time">{{formatDate(entry)}}</small>
     {{entry.title}}
   </h2>
-  <button *ngIf="entry.description" (click)="displayToggle = !displayToggle" ion-button clear
+  <button *ngIf="entry?.description" (click)="displayToggle = !displayToggle" ion-button clear
           style="vertical-align: middle" item-right>
     <ion-icon name="arrow-dropdown"></ion-icon>
   </button>
-  <p style="white-space: normal" *ngIf="displayToggle">{{entry.description}}</p>
+  <p style="white-space: normal" *ngIf="displayToggle">{{entry?.description}}</p>
 </ion-item>

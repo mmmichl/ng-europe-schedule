@@ -6,6 +6,8 @@ import { ItemDetailsPage } from '../item-details/item-details';
 import {ScheduleService} from '../../services/schedule.service';
 import {ScheduleEntry, EntryType} from '../../model/schedule-entry';
 
+import moment from 'moment';
+
 
 @Component({
   templateUrl: 'list.html'
@@ -13,6 +15,7 @@ import {ScheduleEntry, EntryType} from '../../model/schedule-entry';
 export class ListPage implements OnInit {
   public schedule: ScheduleEntry[] = [];
   EntryType = EntryType;
+  toggleHidden = false;
 
   selectedItem: any;
   icons: string[];
@@ -40,7 +43,7 @@ export class ListPage implements OnInit {
     this.schedule = this.scheduleService.getStored();
 
     if (navigator.onLine) {
-      this.scheduleService.update();
+      //this.scheduleService.update();
     }
   }
 
@@ -48,5 +51,13 @@ export class ListPage implements OnInit {
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });
+  }
+
+  showEntry(entry: ScheduleEntry): boolean {
+    return this.timeNow() < moment(entry.time).add(entry.duration, 'm').toDate();
+  }
+
+  timeNow() {
+    return new Date();
   }
 }

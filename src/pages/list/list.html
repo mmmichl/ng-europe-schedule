@@ -1,13 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>NG Europe Schedule</ion-title>
+    <ion-buttons end>
+      <button outline (click)="toggleHidden = !toggleHidden" ion-button item-right>Toggle Past</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list no-lines>
     <div *ngFor="let entry of schedule" [class.day-start]="entry.type === EntryType.NEW_DAY">
-      <app-list-schedule [entry]="entry"></app-list-schedule>
+      <app-list-schedule [class.past]="!showEntry(entry)" *ngIf="toggleHidden || showEntry(entry)" [entry]="entry"></app-list-schedule>
     </div>
   </ion-list>
   <!--<ion-list>-->

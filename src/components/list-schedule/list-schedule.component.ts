@@ -2,6 +2,8 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ScheduleEntry, EntryType} from '../../model/schedule-entry';
 import {ScheduleService} from '../../services/schedule.service';
 
+import moment from 'moment';
+
 @Component({
   selector: 'app-list-schedule',
   templateUrl: './list-schedule.component.html'
@@ -28,5 +30,11 @@ export class ListScheduleComponent implements OnInit {
 
   toggleStar(entry: ScheduleEntry) {
     this.scheduleService.toggleStar(entry);
+  }
+
+  formatDate(entry: ScheduleEntry) {
+    if (entry.time) {
+      return moment(entry.time).format('hh:mm');
+    }
   }
 }

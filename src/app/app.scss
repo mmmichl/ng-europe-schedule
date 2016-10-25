@@ -21,8 +21,15 @@
   padding-top: 20px;
 }
 
-app-list-schedule h2 small {
-  color: #808080;
+.past {
+    opacity: 0.5;
+  }
+  
+app-list-schedule {
+
+  h2 small {
+    color: #808080;
+  }
 }
 
 .yellow {
